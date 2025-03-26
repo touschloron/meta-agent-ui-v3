@@ -20,6 +20,9 @@ export async function POST(req: NextRequest) {
     messages,
   });
 
-  const reply = completion.choices[0].message.content || '';
+  const reply = completion.choices[0]?.message?.content || 'No reply generated.';
+  console.log("💬 OpenAI Reply:", reply);
+
   return NextResponse.json({ reply });
+
 }
