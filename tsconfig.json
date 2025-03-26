@@ -15,6 +15,14 @@
     "jsx": "preserve",
     "incremental": true
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],
-  "exclude": ["node_modules"]
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts"           // ✅ <-- Add this!
+  ],
+  "exclude": ["node_modules"],
+  "plugins": [
+    { "name": "next" }               // ✅ <-- Helps with type hints in Next.js
+  ]
 }
