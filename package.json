@@ -1,6 +1,7 @@
 {
   "name": "meta-agent-ui",
   "version": "1.0.0",
+  "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -11,5 +12,10 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "openai": "^4.0.0"
+  },
+  "devDependencies": {
+    "typescript": "^5.2.2",
+    "@types/react": "^18.2.15",
+    "@types/node": "^18.17.19"
   }
 }
