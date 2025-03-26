@@ -15,10 +15,7 @@ Use clear formatting.`;
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const messages = [
-      { role: 'system', content: SYSTEM_PROMPT },
-      ...body.messages,
-    ];
+    const messages = [{ role: 'system', content: SYSTEM_PROMPT }, ...body.messages];
 
     const completion = await openai.chat.completions.create({
       model: 'gpt-4',
@@ -26,11 +23,12 @@ export async function POST(req: NextRequest) {
     });
 
     const reply = completion.choices[0]?.message?.content || '⚠️ No reply generated.';
-    console.log('✅ GPT Reply:', reply);
     return NextResponse.json({ reply });
-
   } catch (error: any) {
-    console.error('❌ API Error:', error?.message || error);
-    return NextResponse.json({ reply: '❌ Server error while processing your request.' }, { status: 500 });
+    console.error("❌ API error:", error);
+    return NextResponse.json(
+      { reply: '❌ Server error while processing your request.' },
+      { status: 500 }
+    );
   }
 }
